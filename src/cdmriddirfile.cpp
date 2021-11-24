@@ -121,9 +121,9 @@ bool CDmridDirFile::RefreshContent(const CBuffer &buffer)
             // get items
             char *dmrid;
             char *callsign;
-            if ( ((dmrid = ::strtok(ptr1, ";")) != NULL) && IsValidDmrid(dmrid) )
+            if ( ((dmrid = ::strtok(ptr1, "\t")) != NULL) && IsValidDmrid(dmrid) )
             {
-                if ( ((callsign = ::strtok(NULL, ";")) != NULL) )
+                if ( ((callsign = ::strtok(NULL, "\t")) != NULL) )
                 {
                     // new entry
                     uint32 ui = atoi(dmrid);
