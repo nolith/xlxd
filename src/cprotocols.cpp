@@ -70,50 +70,50 @@ bool CProtocols::Init(void)
     
     m_Mutex.lock();
     {
-        // create and initialize DEXTRA
-        delete m_Protocols[0];
-        m_Protocols[0] = new CDextraProtocol;
-        ok &= m_Protocols[0]->Init();
+        // // create and initialize DEXTRA
+        // delete m_Protocols[0];
+        // m_Protocols[0] = new CDextraProtocol;
+        // ok &= m_Protocols[0]->Init();
         
-        // create and initialize DPLUS
-        delete m_Protocols[1];
-        m_Protocols[1] = new CDplusProtocol;
-        ok &= m_Protocols[1]->Init();
+        // // create and initialize DPLUS
+        // delete m_Protocols[1];
+        // m_Protocols[1] = new CDplusProtocol;
+        // ok &= m_Protocols[1]->Init();
         
-        // create and initialize DCS
-        delete m_Protocols[2];
-        m_Protocols[2] = new CDcsProtocol;
-        ok &= m_Protocols[2]->Init();
+        // // create and initialize DCS
+        // delete m_Protocols[2];
+        // m_Protocols[2] = new CDcsProtocol;
+        // ok &= m_Protocols[2]->Init();
         
-        // create and initialize XLX - interlink
-        delete m_Protocols[3];
-        m_Protocols[3] = new CXlxProtocol;
-        ok &= m_Protocols[3]->Init();
+        // // create and initialize XLX - interlink
+        // delete m_Protocols[3];
+        // m_Protocols[3] = new CXlxProtocol;
+        // ok &= m_Protocols[3]->Init();
         
-        // create and initialize DMRPLUS
-        delete m_Protocols[4];
-        m_Protocols[4] = new CDmrplusProtocol;
-        ok &= m_Protocols[4]->Init();
+        // // create and initialize DMRPLUS
+        // delete m_Protocols[4];
+        // m_Protocols[4] = new CDmrplusProtocol;
+        // ok &= m_Protocols[4]->Init();
         
         // create and initialize DMRMMDVM
-        delete m_Protocols[5];
-        m_Protocols[5] = new CDmrmmdvmProtocol;
-        ok &= m_Protocols[5]->Init();
+        delete m_Protocols[0];
+        m_Protocols[0] = new CDmrmmdvmProtocol;
+        ok &= m_Protocols[0]->Init();
         
-        // create and initialize YSF
-        delete m_Protocols[6];
-        m_Protocols[6] = new CYsfProtocol;
-        ok &= m_Protocols[6]->Init();
+        // // create and initialize YSF
+        // delete m_Protocols[6];
+        // m_Protocols[6] = new CYsfProtocol;
+        // ok &= m_Protocols[6]->Init();
 
-        // create and initialize G3
-        delete m_Protocols[7];
-        m_Protocols[7] = new CG3Protocol;
-        ok &= m_Protocols[7]->Init();
+        // // create and initialize G3
+        // delete m_Protocols[7];
+        // m_Protocols[7] = new CG3Protocol;
+        // ok &= m_Protocols[7]->Init();
 
-        // create and initialize IMRS
-        delete m_Protocols[8];
-        m_Protocols[8] = new CImrsProtocol;
-        ok &= m_Protocols[8]->Init();
+        // // create and initialize IMRS
+        // delete m_Protocols[8];
+        // m_Protocols[8] = new CImrsProtocol;
+        // ok &= m_Protocols[8]->Init();
     }
     m_Mutex.unlock();
    

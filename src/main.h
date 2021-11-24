@@ -70,16 +70,16 @@
 
 // protocols ---------------------------------------------------
 
-#define NB_OF_PROTOCOLS                 9
+#define NB_OF_PROTOCOLS                 1
 
 #define PROTOCOL_ANY                    -1
 #define PROTOCOL_NONE                   0
-#define PROTOCOL_DEXTRA                 1
+#define PROTOCOL_DEXTRA                 6
 #define PROTOCOL_DPLUS                  2
 #define PROTOCOL_DCS                    3
 #define PROTOCOL_XLX                    4
 #define PROTOCOL_DMRPLUS                5
-#define PROTOCOL_DMRMMDVM               6
+#define PROTOCOL_DMRMMDVM               1
 #define PROTOCOL_YSF                    7
 #define PROTOCOL_G3                     8
 #define PROTOCOL_IMRS					9
