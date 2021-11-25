@@ -71,15 +71,7 @@ CCallsign::CCallsign(const char *sz, uint32 dmrid)
     }
     else if ( m_uiDmrid != 0 )
     {
-    	g_DmridDir.Lock();
-    	{
-			const CCallsign *callsign = g_DmridDir.FindCallsign(m_uiDmrid);
-			if ( callsign != NULL )
-			{
-				::memcpy(m_Callsign, callsign->m_Callsign, sizeof(m_Callsign));
-			}
-		}
-		g_DmridDir.Unlock();
+        this->SetDmrid(dmrid, true);
     }
 }
 
@@ -231,6 +223,14 @@ void CCallsign::SetYsfCallsign(const char *sz)
 
 void CCallsign::SetDmrid(uint32 dmrid, bool UpdateCallsign)
 {
+    // hotspots appends 2 digits to their DMR ID, we can use this to define the incoming module
+    uint8 hotspotid = 0;
+    if (dmrid > 9999999U)
+    {
+        hotspotid = dmrid % 100;
+        dmrid = dmrid / 100;
+    }
+
     m_uiDmrid = dmrid;
     if ( UpdateCallsign )
     {
@@ -243,6 +243,13 @@ void CCallsign::SetDmrid(uint32 dmrid, bool UpdateCallsign)
 			}
 		}
 		g_DmridDir.Unlock();
+
+		if (hotspotid > 0)
+		{
+		    char module = 'A';
+		    module += (hotspotid - 1) % 26;
+		    this->SetModule(module);
+		}
     }
 }
 

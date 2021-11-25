@@ -511,7 +511,7 @@ bool CDmrmmdvmProtocol::IsValidKeepAlivePacket(const CBuffer &Buffer, CCallsign 
     {
         uint32 uiRptrId = MAKEDWORD(MAKEWORD(Buffer.data()[10],Buffer.data()[9]),MAKEWORD(Buffer.data()[8],Buffer.data()[7]));
         callsign->SetDmrid(uiRptrId, true);
-        callsign->SetModule(MMDVM_MODULE_ID);
+        CDmrmmdvmProtocol::SetModule(callsign);
         valid = callsign->IsValid();
     }
     return valid;
@@ -526,7 +526,7 @@ bool CDmrmmdvmProtocol::IsValidConnectPacket(const CBuffer &Buffer, CCallsign *c
     {
         uint32 uiRptrId = MAKEDWORD(MAKEWORD(Buffer.data()[7],Buffer.data()[6]),MAKEWORD(Buffer.data()[5],Buffer.data()[4]));
         callsign->SetDmrid(uiRptrId, true);
-        callsign->SetModule(MMDVM_MODULE_ID);
+        CDmrmmdvmProtocol::SetModule(callsign);
         valid = callsign->IsValid();
         if ( !valid)
         {
@@ -545,7 +545,7 @@ bool CDmrmmdvmProtocol::IsValidAuthenticationPacket(const CBuffer &Buffer, CCall
     {
         uint32 uiRptrId = MAKEDWORD(MAKEWORD(Buffer.data()[7],Buffer.data()[6]),MAKEWORD(Buffer.data()[5],Buffer.data()[4]));
         callsign->SetDmrid(uiRptrId, true);
-        callsign->SetModule(MMDVM_MODULE_ID);
+        CDmrmmdvmProtocol::SetModule(callsign);
         valid = callsign->IsValid();
         if ( !valid)
         {
@@ -565,7 +565,7 @@ bool CDmrmmdvmProtocol::IsValidDisconnectPacket(const CBuffer &Buffer, CCallsign
     {
         uint32 uiRptrId = MAKEDWORD(MAKEWORD(Buffer.data()[7],Buffer.data()[6]),MAKEWORD(Buffer.data()[5],Buffer.data()[4]));
         callsign->SetDmrid(uiRptrId, true);
-        callsign->SetModule(MMDVM_MODULE_ID);
+        CDmrmmdvmProtocol::SetModule(callsign);
         valid = callsign->IsValid();
     }
     return valid;
@@ -580,7 +580,7 @@ bool CDmrmmdvmProtocol::IsValidConfigPacket(const CBuffer &Buffer, CCallsign *ca
     {
         uint32 uiRptrId = MAKEDWORD(MAKEWORD(Buffer.data()[7],Buffer.data()[6]),MAKEWORD(Buffer.data()[5],Buffer.data()[4]));
         callsign->SetDmrid(uiRptrId, true);
-        callsign->SetModule(MMDVM_MODULE_ID);
+        CDmrmmdvmProtocol::SetModule(callsign);
         valid = callsign->IsValid();
         if ( !valid)
         {
@@ -600,7 +600,7 @@ bool CDmrmmdvmProtocol::IsValidOptionPacket(const CBuffer &Buffer, CCallsign *ca
     {
         uint32 uiRptrId = MAKEDWORD(MAKEWORD(Buffer.data()[7],Buffer.data()[6]),MAKEWORD(Buffer.data()[5],Buffer.data()[4]));
         callsign->SetDmrid(uiRptrId, true);
-        callsign->SetModule(MMDVM_MODULE_ID);
+        CDmrmmdvmProtocol::SetModule(callsign);
         valid = callsign->IsValid();
     }
     return valid;
@@ -1200,4 +1200,10 @@ void CDmrmmdvmProtocol::AppendDmrRptrIdToBuffer(CBuffer *buffer, uint32 id) cons
     buffer->Append((uint8)LOBYTE(HIWORD(id)));
     buffer->Append((uint8)HIBYTE(LOWORD(id)));
     buffer->Append((uint8)LOBYTE(LOWORD(id)));
+}
+
+void CDmrmmdvmProtocol::SetModule(CCallsign *callsign)
+{
+    if (callsign->GetModule() == ' ')
+        callsign->SetModule(MMDVM_MODULE_ID);
 }

@@ -121,6 +121,8 @@ protected:
     void AppendDmrIdToBuffer(CBuffer *, uint32) const;
     void AppendDmrRptrIdToBuffer(CBuffer *, uint32) const;
 
+private:
+    static void SetModule(CCallsign *);
 
 protected:
     // for keep alive
